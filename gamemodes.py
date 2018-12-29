@@ -44,6 +44,7 @@ def game_loop(lives, letters_questions, letters_answers, guessed_letters):
                         letters_questions[i] = guess
                         if letters_questions == letters_answers:
                             print("\nYOU WIN!\n")
+                            update_log(letters_answers, "WIN")
                             return None
         else:
             print("\nLetter has already been guessed!\n")
@@ -51,9 +52,19 @@ def game_loop(lives, letters_questions, letters_answers, guessed_letters):
     draw_letters(letters_questions)
     if (lives < 1):
         print("\nYOU LOSE!\nThe word was:")
-        print(letters_answers)
+        word = ''.join(letters_answers)
+        print(word)
+        update_log(letters_answers, "LOSS")
         return None
     game_loop(lives, letters_questions, letters_answers, guessed_letters)
+
+def update_log(letters_answers, result):
+    word = ''.join(letters_answers)
+    log = open('log.txt', 'a')
+    to_write_list = [word, " [", result, "] \n"]
+    to_write = ''.join(to_write_list)
+    log.write(to_write)
+    log.close()
 
 def draw_lives(lives):
     print("\n")
