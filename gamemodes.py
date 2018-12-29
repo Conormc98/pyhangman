@@ -7,9 +7,18 @@
 import wordhandler
 
 def player_vs_cpu():
-    lives = 6
     print('\nPlayer vs CPU game.\n')
     word = wordhandler.get_word()
+    init_game(word)
+
+def player_vs_player():
+    print('\nPlayer vs Player game.\n')
+    word = input("Please choose a word for the other player to guess.\n")
+    print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+    init_game(word.lower())
+
+def init_game(word):
+    lives = 6
     draw_lives(lives)
     letters_questions = []
     for i in range(len(word)):
@@ -19,14 +28,11 @@ def player_vs_cpu():
     guessed_letters = []
     game_loop(lives, letters_questions, letters_answers, guessed_letters)
 
-def player_vs_player():
-    print('\nPlayer vs Player game.\n')
-
 def game_loop(lives, letters_questions, letters_answers, guessed_letters):
     print("\nGuessed Letters:\n")
     print(guessed_letters)
     print("\n")
-    guess = input("Guess a letter to find in the word.\n")
+    guess = input("Guess a letter to find in the word.\n").lower()
     if guess not in guessed_letters:
         guessed_letters.append(guess)
         if guess not in letters_answers:
