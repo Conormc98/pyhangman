@@ -5,14 +5,14 @@
 
 <p>1. Clone this repo</p>
 <p>2. Open terminal and <b>cd</b> into the folder</p>
-<p>3. Use the virtual environment 'venv'</p>
+<p>3. Install the requirements from 'requirements.txt'</p>
 
-'''
-source venv/bin/activate
-'''
+```
+pip install -r requirements.txt
+```
 
 <p>4. Run app.py</p>
 
-'''
+```
 python3 app.py
-'''
+```
