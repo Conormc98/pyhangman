@@ -33,25 +33,25 @@ def game_loop(lives, letters_questions, letters_answers, guessed_letters):
     print(guessed_letters)
     print("\n")
     guess = input("Guess a letter to find in the word.\n").lower()
-    if guess not in guessed_letters:
-        guessed_letters.append(guess)
-        if guess not in letters_answers:
-            lives -= 1
+    if(len(guess) == 1):
+        if guess not in guessed_letters:
+            guessed_letters.append(guess)
+            if guess not in letters_answers:
+                lives -= 1
+            else:
+                for i in range(len(letters_answers)):
+                    if (letters_answers[i] == guess):
+                        letters_questions[i] = guess
+                        if letters_questions == letters_answers:
+                            print("\nYOU WIN!\n")
+                            return None
         else:
-            for i in range(len(letters_answers)):
-                if (letters_answers[i] == guess):
-                    letters_questions[i] = guess
-                    if letters_questions == letters_answers:
-                        print("\nYOU WIN!\n")
-                        return None
-    else:
-        print("\nLetter has already been guessed!\n")
-
+            print("\nLetter has already been guessed!\n")
     draw_lives(lives)
     draw_letters(letters_questions)
     if (lives < 1):
         print("\nYOU LOSE!\nThe word was:")
-        print(letters_answers.join())
+        print(letters_answers)
         return None
     game_loop(lives, letters_questions, letters_answers, guessed_letters)
 
