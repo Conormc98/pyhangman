@@ -16,7 +16,6 @@ def player_vs_cpu():
         letters_questions.append("?")
     draw_letters(letters_questions)
     letters_answers = list(word)
-    draw_letters(letters_answers)
     guessed_letters = []
     game_loop(lives, letters_questions, letters_answers, guessed_letters)
 

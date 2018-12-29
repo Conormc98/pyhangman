@@ -14,5 +14,5 @@ source venv/bin/activate
 <p>4. Run app.py</p>
 
 '''
-python app.py
+python3 app.py
 '''
