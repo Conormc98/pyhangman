@@ -50,7 +50,8 @@ def game_loop(lives, letters_questions, letters_answers, guessed_letters):
     draw_lives(lives)
     draw_letters(letters_questions)
     if (lives < 1):
-        print("\nYOU LOSE!\n")
+        print("\nYOU LOSE!\nThe word was:")
+        print(letters_answers.join())
         return None
     game_loop(lives, letters_questions, letters_answers, guessed_letters)
 
