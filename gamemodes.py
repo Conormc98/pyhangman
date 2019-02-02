@@ -5,6 +5,7 @@
 #
 
 import wordhandler
+import os
 
 def player_vs_cpu():
     print('\nPlayer vs CPU game.\n')
@@ -67,6 +68,7 @@ def update_log(letters_answers, result):
     log.close()
 
 def draw_lives(lives):
+    clear = os.system('clear')
     print("\n")
     print("----------")
     print("|        |")
