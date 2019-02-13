@@ -10,6 +10,8 @@ import random
 def get_word():
     wordsFrame = pd.read_csv('words.csv')
     words = wordsFrame["Word"].values
+    definitions = wordsFrame["Definitions"].values
     selection = random.randint(1, len(words))
     selected_word = words[selection]
-    return selected_word
+    word_definition = definitions[selection]
+    return selected_word, word_definition

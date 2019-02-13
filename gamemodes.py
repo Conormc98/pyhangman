@@ -9,8 +9,8 @@ import os
 
 def player_vs_cpu():
     print('\nPlayer vs CPU game.\n')
-    word = wordhandler.get_word()
-    init_game(word)
+    word, definition = wordhandler.get_word()
+    init_game(word, definition)
 
 def player_vs_player():
     print('\nPlayer vs Player game.\n')
@@ -18,18 +18,20 @@ def player_vs_player():
     print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
     init_game(word.lower())
 
-def init_game(word):
+def init_game(word, definition):
     lives = 6
     draw_lives(lives)
     letters_questions = []
     for i in range(len(word)):
         letters_questions.append("?")
-    draw_letters(letters_questions)
+    draw_letters(letters_questions, definition)
     letters_answers = list(word)
     guessed_letters = []
-    game_loop(lives, letters_questions, letters_answers, guessed_letters)
+    game_loop(lives, letters_questions, letters_answers, guessed_letters,\
+    definition)
 
-def game_loop(lives, letters_questions, letters_answers, guessed_letters):
+def game_loop(lives, letters_questions, letters_answers, guessed_letters,\
+definition):
     print("\nGuessed Letters:\n")
     print(guessed_letters)
     print("\n")
@@ -50,14 +52,15 @@ def game_loop(lives, letters_questions, letters_answers, guessed_letters):
         else:
             print("\nLetter has already been guessed!\n")
     draw_lives(lives)
-    draw_letters(letters_questions)
+    draw_letters(letters_questions, definition)
     if (lives < 1):
         print("\nYOU LOSE!\nThe word was:")
         word = ''.join(letters_answers)
         print(word)
         update_log(letters_answers, "LOSS")
         return None
-    game_loop(lives, letters_questions, letters_answers, guessed_letters)
+    game_loop(lives, letters_questions, letters_answers, guessed_letters,\
+    definition)
 
 def update_log(letters_answers, result):
     word = ''.join(letters_answers)
@@ -96,7 +99,9 @@ def draw_lives(lives):
 
     print("----------\n")
 
-def draw_letters(letters_questions):
+def draw_letters(letters_questions, definition):
+    print("\n")
+    print(definition)
     print("\n")
     for i in range(len(letters_questions)):
         if letters_questions[i] == "?":
